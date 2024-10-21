@@ -1,4 +1,7 @@
 from django.db import models
+from form.models import Form
+from form.models import Process
+from user.models import User
 
 
 
@@ -29,12 +32,12 @@ class Report(models.Model):
 
 class FormResponse(models.Model):
     form = models.ForeignKey(
-        'Form',
+        Form,
         on_delete=models.CASCADE,
         related_name='responses',
         )
     user = models.ForeignKey(
-        'User',
+        User,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -48,12 +51,12 @@ class FormResponse(models.Model):
 
 class ProcessResponse(models.Model):
     process = models.ForeignKey(
-        'Process',
+        Process,
         on_delete=models.CASCADE,
         related_name='responses',
         )
     user = models.ForeignKey(
-        'User',
+        User,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
