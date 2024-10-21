@@ -107,4 +107,3 @@ class PeriodicReport(models.Model):
 
     def __str__(self):
         return f"{self.get_frequency_display()} report for {self.report}"
-
