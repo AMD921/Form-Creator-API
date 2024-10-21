@@ -23,7 +23,7 @@ class PROCESS_TYPE_CHOICES(Enum):
         ]
     
 
-class process(models.Model):
+class Process(models.Model):
     title = models.CharField( max_length=255)
     description = models.TextField(null= True)
     is_public = models.BooleanField(default= True)
