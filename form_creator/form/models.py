@@ -47,7 +47,7 @@ class Question(models.Model):
     type = models.CharField(max_length=50, choices=QUESTION_TYPE_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    answer = models.ForeignKey('Answer', on_delete=models.CASCADE, related_name='answers')
+    #answer = models.ForeignKey('Answer', on_delete=models.CASCADE, related_name='answers')
 
 
 class Answer(models.Model):
@@ -55,7 +55,7 @@ class Answer(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    #question = models.ForeignKey('Question', on_delete=models.CASCADE)
+    question = models.ForeignKey('Question', on_delete=models.CASCADE)
     text = models.TextField()
 
 

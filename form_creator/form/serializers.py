@@ -23,7 +23,7 @@ class QuestionSerializer(serializers.ModelSerializer):
             'type',
             'created_at',
             'updated_at',
-            'answer',
+            #'answer',
             ]
 
 class AnswerSerializer(serializers.ModelSerializer):
@@ -34,7 +34,7 @@ class AnswerSerializer(serializers.ModelSerializer):
             'user',
             'created_at',
             'updated_at',
-            #'question',
+            'question',
             'text',
             ]
 
