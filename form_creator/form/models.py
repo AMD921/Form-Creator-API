@@ -35,3 +35,33 @@ class Process(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     
 # Create your models here.
+#Amin:
+class Question(models.Model):
+    QUESTION_TYPE_CHOICES = [
+        ('MCQ', 'Multiple Choice'),
+        ('TEXT', 'Text'),
+        # Add more types if needed
+    ]   
+    id = models.AutoField(primary_key=True)
+    question_text = models.TextField()
+    type = models.CharField(max_length=50, choices=QUESTION_TYPE_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    #answer = models.ForeignKey('Answer', on_delete=models.CASCADE, related_name='answers')
+
+
+class Answer(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    question = models.ForeignKey('Question', on_delete=models.CASCADE)
+    text = models.TextField()
+
+
+class Category(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.TextField()
+    question = models.ForeignKey('Question', on_delete=models.CASCADE)
+    process = models.ForeignKey('Process', on_delete=models.CASCADE)
