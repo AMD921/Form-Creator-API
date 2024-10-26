@@ -1,3 +1,4 @@
+# user/urls.py
 from .views import UserListCreate, UserDetail
 from django.urls import path, include
 
