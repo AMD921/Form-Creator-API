@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from  serializers import ProcessSerializer
-from serializers import FormSerializer
-from serializers import QuestionSerializer, AnswerSerializer, CategorySerializer
+from .serializers import ProcessSerializer
+from .serializers import FormSerializer
+from .serializers import QuestionSerializer, AnswerSerializer, CategorySerializer
 from .models import Form
 from .models import Process
 from .models import Question, Answer, Category
