@@ -8,9 +8,9 @@ from report.viewsets import ProcessResponseViewSet
 
 
 router = DefaultRouter()
-router.register(r'reports', ReportViewSet)
-router.register(r'form-responses', FormResponseViewSet)
-router.register(r'process-responses', ProcessResponseViewSet)
+router.register(r'reports', ReportViewSet, basename='reports')
+router.register(r'form-responses', FormResponseViewSet, basename='form-reports')
+router.register(r'process-responses', ProcessResponseViewSet, basename='process-reports')
 
 urlpatterns = [
     path('', include(router.urls)),
