@@ -21,15 +21,12 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 from rest_framework.routers import DefaultRouter
 
-from user.views import UserListCreate
-from user.views import UserDetail
-
 router = DefaultRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('users/', include('user.urls')),
     path('report/', include('report.urls')),
-    path('api/', include('user.urls')),
-    path('api/forms/', include('form.urls')),
+    path('forms/', include('form.urls')),
 ] + debug_toolbar_urls()
