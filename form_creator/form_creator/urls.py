@@ -18,7 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 
+from rest_framework.routers import DefaultRouter
+
+from user.views import UserListCreate
+from user.views import UserDetail
+
+router = DefaultRouter()
+
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('report/', include('report.urls')),
     path('api/', include('user.urls')),
