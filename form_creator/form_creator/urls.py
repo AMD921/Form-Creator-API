@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 from rest_framework.routers import DefaultRouter
 
@@ -31,4 +32,4 @@ urlpatterns = [
     path('report/', include('report.urls')),
     path('api/', include('user.urls')),
     path('api/forms/', include('form.urls')),
-]
+] + debug_toolbar_urls()
