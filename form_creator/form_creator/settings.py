@@ -67,6 +67,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+AUTH_USER_MODEL = 'user.User'
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
