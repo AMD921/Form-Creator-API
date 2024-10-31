@@ -11,4 +11,5 @@ router.register(r'forms', FormViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    # path('forms/<int:related_object_id>/', FormViewSet.as_view({'get': 'retrieve_by_id'}), name='form-detail'),
 ]

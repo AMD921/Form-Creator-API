@@ -8,7 +8,6 @@ from user.models import User
 class Report(models.Model):
     REPORT_TYPE_CHOICES = [
         ('form', 'Form'),
-        ('process', 'Process')
     ]
     report_type = models.CharField(
         max_length=10,
@@ -28,6 +27,7 @@ class Report(models.Model):
 
     def __str__(self):
         return f"{self.get_report_type_display()} - {self.related_object_id}"
+    
 
 
 class FormResponse(models.Model):
