@@ -10,8 +10,7 @@ Refer to the [requirements.txt file](https://github.com/AMD921/Form-Creator-API/
 - [https://github.com/YasamanRaouf](https://github.com/YasamanRaouf)
 - [https://github.com/mahanmi](https://github.com/mahanmi)
 - [https://github.com/Siamakka](https://github.com/Siamakka)
-- [https://github.com/YasamanRaouf](https://github.com/YasamanRaouf)
-
+- [https://github.com/i-ftm](https://github.com/i-ftm)
 ## ERD Overview:
 ![Entity-Relationship Diagram](https://github.com/AMD921/Form-Creator-API/blob/main/erd.png?raw=true)
 
