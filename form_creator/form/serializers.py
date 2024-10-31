@@ -12,8 +12,8 @@ class FormSerializer(serializers.ModelSerializer):
 class ProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = Process
-        fields = ['id', 'title', 'description', 'is_public', 'created_by', 'updated_at', 'form', 'password', 'type', 'user']
-
+        fields = ['id', 'title', 'description', 'is_public', 'created_at', 'updated_at', 'form', 'password', 'type', 'user']
+        read_only_fields =  ['created_at', 'updated_at']
 #Amin
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
