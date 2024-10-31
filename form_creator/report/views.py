@@ -19,23 +19,39 @@ from report.serializers import PeriodicReportSerializer
 
 
 class ReportViewSet(viewsets.ModelViewSet):
-    """
-    This viewset handles the CRUD operations for the Report model.
-    """
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
 
-    @action(detail=True, methods=['get'])
-    def logs(self, request, pk=None):
-        """
-        Custom action to get the logs associated with a specific report.
-        """
-        report = self.get_object()  # Retrieve the specific report based on the pk
-        logs = report.logs.all()  # Get all logs associated with the report
-        return Response(
-            [log.change_type for log in logs],
-            status=status.HTTP_200_OK,
-            )
+    @action(detail=False, methods=['get'], url_path='form/(?P<related_object_id>[^/.]+)')
+    def retrieve_report_by_form_id(self, request, related_object_id=None):
+        reports = Report.objects.filter(related_object_id=related_object_id, report_type='form')
+
+        if reports.exists():
+            serializer = self.get_serializer(reports, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'No reports found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+class ProcessViewSet(viewsets.ModelViewSet):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+
+    @action(detail=False, methods=['get'], url_path='form/(?P<related_object_id>[^/.]+)')
+    def retrieve_report_by_form_id(self, request, related_object_id=None):
+        reports = Report.objects.filter(related_object_id=related_object_id, report_type='process')
+
+        if reports.exists():
+            serializer = self.get_serializer(reports, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'No reports found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+
 
 
 
