@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'djoser',
     'user',
-    #'form',
-    #'report',
+    'form',
+    'report',
 ]
 
 MIDDLEWARE = [
