@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from enum import Enum
+from django.conf import settings
 
 
 class Form(models.Model):
@@ -10,6 +11,7 @@ class Form(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
     question = models.ForeignKey('question', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
 class PROCESS_TYPE_CHOICES(Enum):
     linear = 'l'
@@ -32,7 +34,7 @@ class Process(models.Model):
     form = models.ForeignKey(Form, on_delete= models.CASCADE)
     password = models.CharField(max_length=255, null=True, blank=True)
     type = models.CharField(max_length=10, choices= PROCESS_TYPE_CHOICES.choices())
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
     
 # Create your models here.
 #Amin:
@@ -50,9 +52,10 @@ class Question(models.Model):
     #answer = models.ForeignKey('Answer', on_delete=models.CASCADE, related_name='answers')
 
 
+
 class Answer(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
@@ -61,7 +64,7 @@ class Answer(models.Model):
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.TextField()
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
     process = models.ForeignKey('Process', on_delete=models.CASCADE)
