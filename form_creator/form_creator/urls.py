@@ -17,10 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from debug_toolbar.toolbar import debug_toolbar_urls
+
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('users/', include('user.urls')),
     path('report/', include('report.urls')),
-    path('api/', include('user.urls')),
-    path('api/forms/', include('form.urls')),
-]
+    path('forms/', include('form.urls')),
+] + debug_toolbar_urls()
